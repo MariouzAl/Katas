@@ -48,7 +48,7 @@ public static final String NUEVE =  " _ "+"\n"+
 									"   "	; 
 
 public static final String CERO = " _ "+"\n"+
-								  "| | "+"\n"+	
+								  "| |"+"\n"+	
 								  "|_|"+"\n"+	
 								  "   "	;
 
@@ -77,15 +77,24 @@ public static String numeros[]= new String[]{CERO,UNO,DOS,TRES,CUATRO,CINCO,SEIS
 	public static String convierteCadena(String cadena) {
 		// Separar en lineas
 		String lineas[]=separarEnlineas(cadena);
-		String num=""; 
-		String resp="";
-		for(int c=0;c<lineas[0].length();c+=3){
-			num+=lineas[0].substring(c, c+3)+"\n";
-			num+=lineas[1].substring(c, c+3)+"\n";
-			num+=lineas[2].substring(c, c+3)+"\n";
-			resp+=convierte3(num);
+		int i;
+		String resp=""; 
+		for(i=0;i<9;i++){
+			resp+=digitoEnIndice(lineas, i);
 		}
 		return resp;
+	}
+
+	private static char digitoEnIndice(String[] lineas, int i) {
+		String num="";
+		int inicio = i*3;
+		int tope = i*3+3;
+		
+		num+=lineas[0].substring(inicio, tope)+"\n";
+		num+=lineas[1].substring(inicio, tope)+"\n";
+		num+=lineas[2].substring(inicio, tope)+"\n";
+		num+=lineas[3].substring(inicio, tope);
+		return convierte3(num);
 	}
 
 	private static String[] separarEnlineas(String cadena) {
