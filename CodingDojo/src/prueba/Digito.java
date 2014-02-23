@@ -23,9 +23,9 @@ public class Digito {
 		       "   "	; 
 	
 	public static final String CINCO= " _ "+"\n"+
-		       "|_ "+"\n"+	
-		       " _|"+"\n"+	
-		       "   "	;
+									  "|_ "+"\n"+	
+									  " _|"+"\n"+	
+									  "   "	;
 
 	public static final String SEIS="  _"+"\n"+
 			   						" |_"+"\n"+	
@@ -65,7 +65,7 @@ public static String numeros[]= new String[]{CERO,UNO,DOS,TRES,CUATRO,CINCO,SEIS
 //	numeros[8]=OCHO;
 //	numeros[9]=NUEVE;
 	
-	public static char convierte3(String digito) {
+	public static char convierteDigito(String digito) {
 		for(int c=0;c<10;c++){
 			if(digito.compareTo(numeros[c])==0){
 				return (char)(c+48);
@@ -79,22 +79,33 @@ public static String numeros[]= new String[]{CERO,UNO,DOS,TRES,CUATRO,CINCO,SEIS
 		String lineas[]=separarEnlineas(cadena);
 		int i;
 		String resp=""; 
+		int numEntrada=lineas.length/4;
 		for(i=0;i<9;i++){
-			resp+=digitoEnIndice(lineas, i);
+			
+			resp+=digitoEnIndice(lineas, i, 0);
+		}
+		
+		for(int j=1;j<numEntrada;j++){
+			resp+='\n';
+			for(i=0;i<9;i++){
+				
+				resp+=digitoEnIndice(lineas, i, j);
+			}
+			
 		}
 		return resp;
-	}
-
-	private static char digitoEnIndice(String[] lineas, int i) {
+	} 
+	
+	private static char digitoEnIndice(String[] lineas, int i, int j) {
 		String num="";
 		int inicio = i*3;
 		int tope = i*3+3;
-		
-		num+=lineas[0].substring(inicio, tope)+"\n";
-		num+=lineas[1].substring(inicio, tope)+"\n";
-		num+=lineas[2].substring(inicio, tope)+"\n";
-		num+=lineas[3].substring(inicio, tope);
-		return convierte3(num);
+		j*=4;
+		num+=lineas[j+0].substring(inicio, tope)+"\n";
+		num+=lineas[j+1].substring(inicio, tope)+"\n";
+		num+=lineas[j+2].substring(inicio, tope)+"\n";
+		num+=lineas[j+3].substring(inicio, tope);
+		return convierteDigito(num);
 	}
 
 	private static String[] separarEnlineas(String cadena) {

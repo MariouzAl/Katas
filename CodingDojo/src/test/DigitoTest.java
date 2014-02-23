@@ -15,7 +15,7 @@ public class DigitoTest {
 				       "  |"+"\n"+	
 				       "   "	;
 		
-		assertEquals('1', Digito.convierte3(digito));
+		assertEquals('1', Digito.convierteDigito(digito));
 
 	}
 	
@@ -26,7 +26,7 @@ public class DigitoTest {
 				       "|_ "+"\n"+	
 				       "   "	;
 		
-		assertEquals('2', Digito.convierte3(digito));
+		assertEquals('2', Digito.convierteDigito(digito));
 
 	}
 	
@@ -37,7 +37,7 @@ public class DigitoTest {
 						" _|"+"\n"+	
 						"   "	;
 		
-		assertEquals('3', Digito.convierte3(digito));
+		assertEquals('3', Digito.convierteDigito(digito));
 
 	}
 	
@@ -48,7 +48,7 @@ public class DigitoTest {
 				       "  |"+"\n"+	
 				       "   "	;
 		
-		assertEquals('4', Digito.convierte3(digito));
+		assertEquals('4', Digito.convierteDigito(digito));
 
 	}
 	
@@ -59,7 +59,7 @@ public class DigitoTest {
 				       " _|"+"\n"+	
 				       "   "	;
 		
-		assertEquals('5', Digito.convierte3(digito));
+		assertEquals('5', Digito.convierteDigito(digito));
 
 	}
 	
@@ -70,13 +70,29 @@ public class DigitoTest {
 						"|_|"+"|_|"+"|_|"+"|_|"+"|_|"+"|_|"+"|_|"+"|_|"+"|_|"+"\n"+	
 						"   "+"   "+"   "+"   "+"   "+"   "+"   "+"   "+"   ";
 		
+		String cadenaDoble = " _ "+" _ "+" _ "+" _ "+" _ "+" _ "+" _ "+" _ "+" _ "+"\n"+
+							 "| |"+"| |"+"| |"+"| |"+"| |"+"| |"+"| |"+"| |"+"| |"+"\n"+	
+							 "|_|"+"|_|"+"|_|"+"|_|"+"|_|"+"|_|"+"|_|"+"|_|"+"|_|"+"\n"+	
+							 "   "+"   "+"   "+"   "+"   "+"   "+"   "+"   "+"   "+"\n"+
+							 " _ "+" _ "+" _ "+" _ "+" _ "+" _ "+" _ "+" _ "+"   "+"\n"+
+					 		 "|_ "+"| |"+"|_|"+"|_|"+"| |"+"| |"+"| |"+"| |"+"  |"+"\n"+	
+					 		 " _|"+"|_|"+"  |"+"|_|"+"|_|"+"|_|"+"|_|"+"|_|"+"  |"+"\n"+	
+					 		 "   "+"   "+"   "+"   "+"   "+"   "+"   "+"   "+"   ";
+		
 		String cadena1 = " _ "+" _ "+" _ "+" _ "+" _ "+" _ "+" _ "+" _ "+"   "+"\n"+
 						 "| |"+"| |"+"| |"+"|_|"+"| |"+"| |"+"| |"+"| |"+"  |"+"\n"+	
 						 "|_|"+"|_|"+"|_|"+"|_|"+"|_|"+"|_|"+"|_|"+"|_|"+"  |"+"\n"+	
 						 "   "+"   "+"   "+"   "+"   "+"   "+"   "+"   "+"   ";
 		
+		String cadena2 = " _ "+" _ "+" _ "+" _ "+" _ "+" _ "+" _ "+" _ "+"   "+"\n"+
+				 		 "|_ "+"| |"+"|_|"+"|_|"+"| |"+"| |"+"| |"+"| |"+"  |"+"\n"+	
+				 		 " _|"+"|_|"+"  |"+"|_|"+"|_|"+"|_|"+"|_|"+"|_|"+"  |"+"\n"+	
+				 		 "   "+"   "+"   "+"   "+"   "+"   "+"   "+"   "+"   ";
+		
 		assertEquals("000000000", Digito.convierteCadena(cadena) );
 		assertEquals("000800001", Digito.convierteCadena(cadena1) );
+		assertEquals("509800001", Digito.convierteCadena(cadena2));
+		assertEquals("000000000\n509800001", Digito.convierteCadena(cadenaDoble));
 	}
 	
 	
